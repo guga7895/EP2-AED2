@@ -1,14 +1,7 @@
-/**
-NOME: GUSTAVO AHMAD CASSIARI CHOUMAN
-NºUSP: 13830870
-**/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #define t 3
-
-
 
 typedef int TipoChave;
 
@@ -23,7 +16,7 @@ typedef struct {
     NO* raiz;
 } ArvB;
 
-//procura se a chave desejado está no filho do NO (usada somente no procuraProxInt)
+//procura se a chave desejado estÃ¡ no filho do NO (usada somente no procuraProxInt)
 bool procuraNofilho(NO* no, int k, int i){
     NO* filho;
     filho = no->filhos[i];
@@ -33,7 +26,7 @@ bool procuraNofilho(NO* no, int k, int i){
     return false;
 }
 
-//procura a chave do pai do nó primo(usado no split)
+//procura a chave do pai do nÃ³ primo(usado no split)
 int procuraProxInt(NO* raiz, int k){
     NO* aux;
     aux = raiz;
@@ -52,7 +45,7 @@ int procuraProxInt(NO* raiz, int k){
     return raiz->chave[i];
 }
 
-//pega o proximo nó para fazer os ponteiros das folhas primas(usada no split)
+//pega o proximo nÃ³ para fazer os ponteiros das folhas primas(usada no split)
 NO* procuraProxNO(NO* raiz, int k, int* indiceProxNO){
     NO* aux;
     aux = raiz;
@@ -159,11 +152,11 @@ void splitChild(NO* pai, int i, NO* filhoCheio, ArvB* arvore){
     }
 
     if(novoNO->folha){
-            //não me orgulho dessa linha de codigo
+            //nÃ£o me orgulho dessa linha de codigo
             novoNO->filhos[2*t-1] = procuraProxNO(arvore->raiz,procuraProxInt(arvore->raiz,novoNO->chave[novoNO->numChaves-1]),&puppet);
     }
 
-    //seta os ponteiros de filho da segunda metade do nó cheio pro nó novo
+    //seta os ponteiros de filho da segunda metade do nÃ³ cheio pro nÃ³ novo
     if(!filhoCheio->folha){
         for(j = 0; j < t; j++){
             novoNO->filhos[j] = filhoCheio->filhos[j+t];//j+t-1
@@ -331,7 +324,7 @@ void removeDaFolha(int k, NO* no){
 
 void removeDaFolhaEdoNoInterno(int k, NO* noInterno,NO* NOdaChave,int indice){
     NO* noChave = NOdaChave;
-    //posso excluir do nó interno direto
+    //posso excluir do nÃ³ interno direto
     if(noInterno->numChaves > t-1){
         removeDaFolha(k,NOdaChave);
         noInterno->chave[indice] = NOdaChave->chave[0];
@@ -482,7 +475,7 @@ void removeDaArvore(int k, NO* raiz, ArvB* arv){
     if(sucessor) PaiDoSuc = procuraPaiNO(raiz,sucessor->chave[0]);
 
     if(!procuraNoNaFolha(k,raiz, &NOdaChave)) return;
-//caso 1:a chave está nas folhas, mas não está nos internos
+//caso 1:a chave estÃ¡ nas folhas, mas nÃ£o estÃ¡ nos internos
     if(procuraNoNaFolha(k, raiz, &NOdaChave) && !procuraNoInterno(k,raiz, &NOinterno, &indice)){
 
         //caso 1a: posso excluir da folha direto
@@ -504,7 +497,7 @@ void removeDaArvore(int k, NO* raiz, ArvB* arv){
             return;
         }
     }
-//caso 2:a chave está na folha e está no nó interno
+//caso 2:a chave estÃ¡ na folha e estÃ¡ no nÃ³ interno
     if(procuraNoNaFolha(k, raiz, &NOdaChave) && procuraNoInterno(k,raiz, &NOinterno, &indice)){
 
         if(NOdaChave->numChaves > t-1 && procuraNoInterno(k,raiz,&NOinterno,&indice)){
