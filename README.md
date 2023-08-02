@@ -1,5 +1,5 @@
 # EP2-AED2
-Exercício de Programação 2 da matéria Algoritmos e Estrutura de Dados 2, envolvendo o desenvolvimento de operações básicas em árvores B+.
+Exercício de Programação 2 da matéria Algoritmos e Estrutura de Dados 2, envolvendo o desenvolvimento de operações em árvores B+.
 
 # Objetivo:
 "O objetivo deste exercício-programa consiste em implementar operações básicas (inserção,
